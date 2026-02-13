@@ -1,15 +1,27 @@
 {
   "manifest_version": 3,
-  "name": "SEO Headings",
-  "version": "1.1",
+  "name": "SEO Analyzer",
+  "version": "2.0.0",
   "description": "Highlight all H1-H6 headings on the page.",
   "permissions": ["scripting", "activeTab"],
+  "background": {
+    "service_worker": "js/background.js"
+  },
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
       "16": "images/icon.png",
       "48": "images/icon.png",
       "128": "images/icon.png"
+    }
+  },
+  "commands": {
+    "highlight-headings": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+H",
+        "mac": "Command+Shift+H"
+      },
+      "description": "Highlight headings on the page"
     }
   }
 }

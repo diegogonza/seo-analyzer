@@ -1,20 +1,18 @@
 (() => {
   const colors = [
-    "#042940", // H1 - azul profundo
-    "#5E60CE", // H2 - violeta azulado
-    "#748CAB", // H3 - azul grisáceo claro
-    "#9F86C0", // H4 - lavanda pastel
-    "#C9B6E4", // H5 - lila claro
-    "#E0CFF7", // H6 - lila muy suave
+    "#39FF14d7", // H1 - verde brillante KICKRANKING
+    "#008000d7", // H2-H6 - verde oscuro KICKRANKING
   ];
 
   for (let i = 1; i <= 6; i++) {
     const headers = document.querySelectorAll("h" + i);
+    const colorIndex = i === 1 ? 0 : 1; // H1 usa color[0], H2-H6 usan color[1]
+
     headers.forEach((header) => {
-      header.style.backgroundColor = colors[i - 1];
+      header.style.backgroundColor = colors[colorIndex];
       header.style.border = "1px solid #ffffff55"; // borde blanco semitransparente
       header.style.padding = "4px";
-      header.style.color = "white"; // texto blanco para todos
+      header.style.color = "white"; // texto blanco forzado para todos
       if (!header.innerHTML.startsWith(`H${i} - `)) {
         header.innerHTML = `H${i} - ` + header.innerHTML;
       }
@@ -24,11 +22,21 @@
 
 (() => {
   const headings = Array.from(
-    document.querySelectorAll("h1, h2, h3, h4, h5, h6")
-  ).map((h) => ({
-    tag: h.tagName,
-    text: h.innerText.trim(),
-  }));
+    document.querySelectorAll("h1, h2, h3, h4, h5, h6"),
+  ).map((h) => {
+    let text = h.innerText.trim();
+    // Eliminar el prefijo "Hn - " si existe
+    const headingLevel = h.tagName.substring(1); // Obtener el número del heading
+    const prefix = `H${headingLevel} - `;
+    if (text.startsWith(prefix)) {
+      text = text.substring(prefix.length);
+    }
+
+    return {
+      tag: h.tagName,
+      text: text,
+    };
+  });
 
   chrome.runtime.sendMessage({ headings });
 })();

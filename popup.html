@@ -1,20 +1,88 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="css/style.css" />
-    <title>SEO Headings</title>
+    <title>SEO Analyzer</title>
   </head>
   <body>
-    <h1>SEO Headings</h1>
-    <p>Highlight all H1-H6 headings on the page.</p>
+    <div class="container">
+      <div class="logo">
+        <a href="https://kickranking.com" target="_blank">
+          <img
+            src="./images/kickranking-blanco-verde.png"
+            alt="SEO Analyzer"
+            width="200"
+          />
+        </a>
+      </div>
+      <!-- Navegación por pestañas -->
+      <nav class="tab-nav">
+        <div class="tab-item active" data-tab="headings">
+          <span class="tab-icon"></span>
+          <span class="tab-label">Headings</span>
+        </div>
+        <!-- <div class="tab-item" data-tab="links">
+          <span class="tab-icon">🔗</span>
+          <span class="tab-label">Links</span>
+        </div>
+        <div class="tab-item" data-tab="images">
+          <span class="tab-icon">🖼️</span>
+          <span class="tab-label">Images</span>
+        </div> -->
+        <!-- <div class="tab-item" data-tab="overview">
+          <span class="tab-icon"></span>
+          <span class="tab-label">Overview</span>
+        </div> -->
+        <!--
+        <div class="tab-item" data-tab="schema">
+          <span class="tab-icon">🏗️</span>
+          <span class="tab-label">Schema</span>
+        </div>
+        -->
+      </nav>
 
-    <div class="action-buttons">
-      <button id="highlightBtn">Highlight</button>
-      <button id="clearBtn">Clear</button>
+      <!-- Contenido de las pestañas -->
+      <main class="tab-content">
+        <!-- Pestaña Headings -->
+        <section id="headings" class="tab-pane active">
+          <h2>Análisis de encabezados</h2>
+          <p>Analice la estructura de los encabezados H1-H6 en la página.</p>
+
+          <div class="action-buttons">
+            <button id="highlightBtn">Analizar</button>
+            <button id="clearBtn">Borrar</button>
+          </div>
+
+          <div id="list"></div>
+        </section>
+
+        <!-- Otras pestañas (placeholder) -->
+        <section id="links" class="tab-pane">
+          <h2>Links Analysis</h2>
+          <p>Analyze internal and external links.</p>
+          <div class="placeholder">Coming soon...</div>
+        </section>
+
+        <section id="images" class="tab-pane">
+          <h2>Images Analysis</h2>
+          <p>Analyze image alt texts and optimization.</p>
+          <div class="placeholder">Coming soon...</div>
+        </section>
+
+        <section id="overview" class="tab-pane">
+          <h2>SEO Overview</h2>
+          <p>General SEO metrics and analysis.</p>
+          <div class="placeholder">Coming soon...</div>
+        </section>
+
+        <section id="schema" class="tab-pane">
+          <h2>Schema Markup</h2>
+          <p>Analyze structured data and schema markup.</p>
+          <div class="placeholder">Coming soon...</div>
+        </section>
+      </main>
     </div>
-
-    <div id="list">...</div>
 
     <script src="js/popup.js"></script>
   </body>
