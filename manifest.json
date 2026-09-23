@@ -1,19 +1,29 @@
 {
   "manifest_version": 3,
   "name": "SEO Analyzer",
-  "version": "2.0.0",
-  "description": "Highlight all H1-H6 headings on the page.",
-  "permissions": ["scripting", "activeTab"],
+  "version": "2.3.0",
+  "description": "Analiza la estructura de encabezados H1-H6 de cualquier página. Por KickRanking.",
+  "minimum_chrome_version": "116",
+  "permissions": ["scripting", "activeTab", "sidePanel"],
+  "optional_host_permissions": ["<all_urls>"],
   "background": {
     "service_worker": "js/background.js"
   },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
   "action": {
-    "default_popup": "popup.html",
+    "default_title": "Abrir SEO Analyzer",
     "default_icon": {
       "16": "images/icon.png",
       "48": "images/icon.png",
       "128": "images/icon.png"
     }
+  },
+  "icons": {
+    "16": "images/icon.png",
+    "48": "images/icon.png",
+    "128": "images/icon.png"
   },
   "commands": {
     "highlight-headings": {
@@ -21,7 +31,7 @@
         "default": "Ctrl+Shift+H",
         "mac": "Command+Shift+H"
       },
-      "description": "Highlight headings on the page"
+      "description": "Resaltar u ocultar los encabezados de la página"
     }
   }
 }
