@@ -262,6 +262,21 @@ function renderStatus(issues) {
     });
   }
   box.append(ring, main, sum);
+  renderPromo(kind, problems.length);
+}
+
+// Mensaje de la tarjeta de KickRanking según el diagnóstico.
+function renderPromo(kind, count) {
+  const copy = {
+    error: ["¿Te ayudamos a corregirlo?", `Encontramos ${count} ${count === 1 ? "problema" : "problemas"} en esta página. En KickRanking los corregimos y hacemos que tu sitio suba en Google.`],
+    warn: ["Tu página puede rendir más", "Hay detalles por pulir. En KickRanking optimizamos tu estructura y tu contenido para posicionar mejor."],
+    ok: ["¡Buena estructura! ¿Vamos por más?", "Los encabezados son solo el comienzo. En KickRanking llevamos tu SEO al siguiente nivel."],
+    idle: ["¿Necesitas ayuda con tu SEO?", "Somos la agencia detrás de esta herramienta. Te ayudamos a corregir tu sitio y a posicionarlo en Google."],
+  }[kind] || null;
+  if (!copy) return;
+  $("promoTitle").textContent = copy[0];
+  $("promoText").textContent = copy[1];
+  $("promoLink").href = `https://kickranking.com/?utm_source=seo-analyzer&utm_medium=extension&utm_campaign=panel-cta&utm_content=${kind}`;
 }
 
 function renderCounts(list) {
@@ -538,6 +553,7 @@ function renderTree() {
 
 // ---------- Estados ----------
 function showEmpty(title = "Todavía no hay análisis", html = null, isError = false) {
+  renderPromo("idle");
   $("results").hidden = true;
   $("emptyState").hidden = false;
   $("emptyState").classList.toggle("is-error", isError);

@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "SEO Analyzer",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "description": "Analiza la estructura de encabezados H1-H6 de cualquier página. Por KickRanking.",
   "minimum_chrome_version": "116",
   "permissions": ["scripting", "activeTab", "sidePanel"],
